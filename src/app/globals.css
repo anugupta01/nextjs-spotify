@@ -1,0 +1,123 @@
+@import "tailwindcss";
+
+/*
+ * Tailwind v4 custom theme — replaces tailwind.config.ts
+ * All custom colours and values are declared here with @theme
+ */
+@theme {
+  --color-spotify-green: #1db954;
+  --color-spotify-black: #121212;
+  --color-spotify-dark: #181818;
+  --color-spotify-highlight: #282828;
+  --color-spotify-light-highlight: #3e3e3e;
+  --color-spotify-gray: #b3b3b3;
+}
+
+/* ─── CSS variables used in JS / inline styles ───────────── */
+:root {
+  --sidebar-width: 240px;
+  --now-playing-height: 90px;
+  --topbar-height: 64px;
+}
+
+/* ─── Base resets ────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #121212;
+  color: white;
+  font-family: -apple-system, BlinkMacSystemFont, 'Circular', 'Helvetica Neue',
+    Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  letter-spacing: 0.015em;
+  line-height: normal;
+  overflow: hidden;
+}
+
+/* ─── Custom scrollbar ───────────────────────────────────── */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.4); }
+
+/* ─── Range inputs ───────────────────────────────────────── */
+input[type='range'] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  outline: none;
+}
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: white;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.1s;
+}
+input[type='range']:hover::-webkit-slider-thumb,
+input[type='range']:focus::-webkit-slider-thumb { opacity: 1; }
+
+input[type='range']::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: white;
+  cursor: pointer;
+  border: none;
+  opacity: 0;
+  transition: opacity 0.1s;
+}
+input[type='range']:hover::-moz-range-thumb,
+input[type='range']:focus::-moz-range-thumb { opacity: 1; }
+
+/* Green accent colour for sliders */
+input[type='range'].accent-spotify-green {
+  accent-color: #1db954;
+}
+
+/* ─── Focus rings ────────────────────────────────────────── */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid white;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* ─── Skeleton shimmer ───────────────────────────────────── */
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,0.05) 25%,
+    rgba(255,255,255,0.10) 50%,
+    rgba(255,255,255,0.05) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 4px;
+}
+
+/* ─── Spinner ────────────────────────────────────────────── */
+@keyframes spin { to { transform: rotate(360deg); } }
+.animate-spin { animation: spin 0.8s linear infinite; }
