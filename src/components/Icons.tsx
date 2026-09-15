@@ -7,8 +7,7 @@ interface IconProps {
   title?: string;
 }
 
-// All icons from the original Angular app
-const icons: Record<string, (props: IconProps) => JSX.Element> = {
+const icons: Record<string, (props: IconProps) => React.ReactElement> = {
   'house-door': ({ size = 16, className = '', title }) => (
     <svg width={size} height={size} viewBox="0 0 16 16" fill="currentColor" className={className} aria-label={title}>
       {title && <title>{title}</title>}
